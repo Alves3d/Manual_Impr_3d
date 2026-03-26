@@ -402,12 +402,17 @@ nav {
   background: rgba(0,0,0,0.9);
   z-index: 200;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 24px;
+  padding: 80px 24px 24px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
+  overflow-y: auto;
+}
+
+@media (min-height: 700px) {
+  .modal-overlay { align-items: center; padding: 24px; }
 }
 
 .modal-overlay.active { opacity: 1; pointer-events: all; }
@@ -606,7 +611,7 @@ nav {
   .sidebar-overlay.active { display: block; }
   .main { padding: 20px; }
   .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-  .modal { grid-template-columns: 1fr; max-height: 85vh; overflow-y: auto; }
+  .modal { grid-template-columns: 1fr; }
   .modal-img { border-radius: 12px 12px 0 0; aspect-ratio: 16/9; }
   .modal-img img { border-radius: 12px 12px 0 0; }
   .modal-body { padding: 20px; }
@@ -812,6 +817,7 @@ function openModal(id) {
     </a>`;
 
   document.getElementById('modalOverlay').classList.add('active');
+  document.getElementById('modalOverlay').scrollTop = 0;
 }
 
 function closeModal() {
