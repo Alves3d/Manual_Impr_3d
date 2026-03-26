@@ -398,40 +398,35 @@ nav {
 /* MODAL */
 .modal-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 200;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 1000;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding: 80px 24px 24px;
+  padding: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s;
-  overflow-y: auto;
+  transition: opacity 0.25s ease;
+  backdrop-filter: blur(6px);
 }
-
-@media (min-height: 700px) {
-  .modal-overlay { align-items: center; padding: 24px; }
-}
-
 .modal-overlay.active { opacity: 1; pointer-events: all; }
-
 .modal {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  max-width: 820px;
+  border-radius: 14px;
   width: 100%;
-  max-height: 90vh;
+  max-width: 800px;
+  max-height: 88vh;
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  transform: scale(0.96);
-  transition: transform 0.3s;
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s ease;
+  scrollbar-width: thin;
 }
-
-.modal-overlay.active .modal { transform: scale(1); }
+.modal-overlay.active .modal { transform: translateY(0) scale(1); }
 
 .modal-img {
   aspect-ratio: 1;
@@ -611,7 +606,8 @@ nav {
   .sidebar-overlay.active { display: block; }
   .main { padding: 20px; }
   .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-  .modal { grid-template-columns: 1fr; }
+  .modal-overlay { padding: 12px; align-items: flex-end; }
+  .modal { grid-template-columns: 1fr; max-height: 90vh; border-radius: 14px 14px 8px 8px; }
   .modal-img { border-radius: 12px 12px 0 0; aspect-ratio: 16/9; }
   .modal-img img { border-radius: 12px 12px 0 0; }
   .modal-body { padding: 20px; }
@@ -817,7 +813,7 @@ function openModal(id) {
     </a>`;
 
   document.getElementById('modalOverlay').classList.add('active');
-  document.getElementById('modalOverlay').scrollTop = 0;
+  document.getElementById('modal').scrollTop = 0;
 }
 
 function closeModal() {
