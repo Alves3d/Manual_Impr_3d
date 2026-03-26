@@ -563,30 +563,72 @@ nav {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* MOBILE FILTER BTN */
+.mobile-filter-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-family: var(--sans);
+  cursor: pointer;
+  transition: all .2s;
+}
+.mobile-filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+
 /* MOBILE */
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
+  .mobile-filter-btn { display: flex; }
   .page { grid-template-columns: 1fr; }
-  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+  .sidebar {
+    position: fixed;
+    top: 73px; left: 0; bottom: 0;
+    width: 280px;
+    z-index: 90;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    border-right: 1px solid var(--border);
+    border-bottom: none;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 89;
+    display: none;
+  }
+  .sidebar-overlay.active { display: block; }
   .main { padding: 20px; }
   .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
-  .modal { grid-template-columns: 1fr; }
+  .modal { grid-template-columns: 1fr; max-height: 85vh; overflow-y: auto; }
   .modal-img { border-radius: 12px 12px 0 0; aspect-ratio: 16/9; }
+  .modal-img img { border-radius: 12px 12px 0 0; }
   .modal-body { padding: 20px; }
   .modal-name { font-size: 28px; }
   .modal-price-val { font-size: 40px; }
   .modal-specs { grid-template-columns: 1fr 1fr; }
+  .nav-back span { display: none; }
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-back">← Voltar ao site</a>
+  <a href="index.html" class="nav-back">← Voltar</a>
   <a href="index.html" class="nav-logo">ALVES<em>.3D</em></a>
-  <a href="https://wa.me/5516992364004?text=Olá! Vim pelo catálogo e quero fazer um pedido!" target="_blank" class="nav-wpp">WhatsApp</a>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button class="mobile-filter-btn" onclick="toggleSidebar()" id="filterBtn">☰ Filtros</button>
+    <a href="https://wa.me/5516992364004?text=Olá! Vim pelo catálogo e quero fazer um pedido!" target="_blank" class="nav-wpp">WhatsApp</a>
+  </div>
 </nav>
 
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 <div class="page">
   <!-- SIDEBAR -->
   <aside class="sidebar">
@@ -676,12 +718,7 @@ function buildCatFilters() {
   });
 }
 
-function setCat(cat) {
-  activeCat = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-  document.getElementById('activeCatTitle').textContent = cat === 'Todos' ? 'COMPLETO' : cat.toUpperCase();
-  filterProducts();
-}
+// setCat defined below
 
 // FILTER & RENDER
 function filterProducts() {
@@ -775,12 +812,10 @@ function openModal(id) {
     </a>`;
 
   document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
 }
 
 function closeModalOverlay(e) {
@@ -788,6 +823,24 @@ function closeModalOverlay(e) {
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const btn = document.getElementById('filterBtn');
+  const isOpen = sidebar.classList.toggle('open');
+  overlay.classList.toggle('active', isOpen);
+  btn.textContent = isOpen ? '× Fechar' : '☰ Filtros';
+}
+
+// Close sidebar when category selected on mobile
+function setCat(cat) {
+  activeCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  document.getElementById('activeCatTitle').textContent = cat === 'Todos' ? 'COMPLETO' : cat.toUpperCase();
+  filterProducts();
+  if (window.innerWidth <= 768) toggleSidebar();
+}
 
 loadProducts();
 </script>
