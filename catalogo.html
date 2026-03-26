@@ -400,8 +400,8 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.88);
-  z-index: 1000;
-  display: flex;
+  z-index: 9999;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -410,7 +410,7 @@ nav {
   transition: opacity 0.25s ease;
   backdrop-filter: blur(6px);
 }
-.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-overlay.active { display: flex; opacity: 1; pointer-events: all; }
 .modal {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -672,14 +672,7 @@ nav {
   </main>
 </div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalOverlay(event)">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <div class="modal-img" id="modalImg"></div>
-    <div class="modal-body" id="modalBody"></div>
-  </div>
-</div>
+
 
 <script>
 let allProducts = [];
@@ -846,5 +839,13 @@ function setCat(cat) {
 
 loadProducts();
 </script>
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
 </body>
 </html>
