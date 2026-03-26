@@ -399,7 +399,7 @@ nav {
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.88);
+  background: rgba(0,0,0,0.92);
   z-index: 9999;
   display: none;
   align-items: center;
@@ -408,9 +408,9 @@ nav {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  backdrop-filter: blur(6px);
 }
 .modal-overlay.active { display: flex; opacity: 1; pointer-events: all; }
+html.modal-open, body.modal-open { overflow: hidden !important; position: fixed; width: 100%; }
 .modal {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -805,12 +805,18 @@ function openModal(id) {
       Quero esse produto
     </a>`;
 
-  document.getElementById('modalOverlay').classList.add('active');
+  window.scrollTo({top: 0, behavior: 'instant'});
+  document.documentElement.classList.add('modal-open');
+  document.body.classList.add('modal-open');
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.add('active');
   document.getElementById('modal').scrollTop = 0;
 }
 
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('active');
+  document.documentElement.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
 }
 
 function closeModalOverlay(e) {
