@@ -603,7 +603,7 @@ function renderProducts(products) {
   grid.innerHTML = products.map(p => `
     <div class="product-card" onclick="location.href='produto.html?id=${p.id}'">
       <div class="product-img">
-        <img src="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="${(p.imagens&&p.imagens[0])||p.imagem||''}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="product-img-placeholder" style="display:none">🖨️</div>
       </div>
       <div class="product-body">
@@ -639,7 +639,7 @@ function openModal(id) {
   if (!p) return;
 
   document.getElementById('modalImg').innerHTML = `
-    <img src="${p.imagem}" alt="${p.nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <img src="${(p.imagens&&p.imagens[0])||p.imagem||''}" alt="${p.nome}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="modal-img-placeholder" style="display:none">🖨️</div>`;
 
   document.getElementById('modalBody').innerHTML = `
