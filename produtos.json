@@ -12,14 +12,17 @@
   },
   {
     "id": 2,
-    "nome": "Chaveiro Bola de Vôlei",
-    "categoria": "Chaveiros",
-    "preco": 15,
+    "nome": "Caixa Sibilla Italiana",
+    "categoria": "Caixas e organizadores",
+    "preco": 20,
     "descricao": "Chaveiro em formato de bola de vôlei com detalhes realistas. Ideal para atletas e fãs do esporte.",
     "material": "PLA",
     "tamanho": "4cm",
     "tags": ["esporte", "chaveiro", "vôlei"],
-    "imagem": "imgs/produtos/bola-volei.jpg"
+    "imagem": ["imgs/produtos/Caixa-Sibilla-1.jpg",
+      "imgs/produtos/Caixa-Sibilla-2.jpg",
+      "imgs/produtos/Caixa-Sibilla-3.jpg"
+    ]
   },
   {
     "id": 3,
