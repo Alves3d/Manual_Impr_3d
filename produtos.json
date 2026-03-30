@@ -8,7 +8,7 @@
     "material": "PLA",
     "tamanho": "10cm",
     "tags": ["pokemon", "brinquedo", "coleção"],
-    "imagens": "imgs/produtos/master-ball.jpg"
+    "imagem": "imgs/produtos/master-ball.jpg"
   },
   {
     "id": 2,
