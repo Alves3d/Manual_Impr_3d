@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "nome": "Chaveiro Patinha Dog",
-    "categoria": "Chaveiros",
+    "nome": "Pokebola MasterBall",
+    "categoria": "Brinquedos",
     "preco": 12,
-    "descricao": "Chaveiro personalizado em formato de patinha de cachorro. Leve, resistente e cheio de charme. Perfeito para presentear quem ama animais.",
+    "descricao": "Pokebola em tamanho real modelo Masterball.",
     "material": "PLA",
-    "tamanho": "5cm",
-    "tags": ["presente", "pet", "chaveiro"],
-    "imagem": "imgs/produtos/patinha-dog.jpg"
+    "tamanho": "10cm",
+    "tags": ["pokemon", "brinquedo", "coleção"],
+    "imagem": "imgs/produtos/master-ball-01.jpg"
   },
   {
     "id": 2,
