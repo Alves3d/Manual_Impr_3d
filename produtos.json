@@ -23,5 +23,24 @@
       "imgs/produtos/Caixa-Sibilla-2.jpg",
       "imgs/produtos/Caixa-Sibilla-3.jpg"
     ]
+  },
+  {
+    "id": 3,
+    "nome": "Placa coleira PET",
+    "categoria": "PET",
+    "preco": 12,
+    "descricao": "Coleirinha personalizada com nome do seu PET! Coloque também seu número de identificação na coleirinha.",
+    "material": "PLA",
+    "tamanho": "7cm",
+    "tags": [
+      "PET",
+      "chaveiro",
+      "personalizado"
+    ],
+    "imagens": [
+      "imgs/produtos/3-Placa-coleira-PET-1.jpg",
+      "imgs/produtos/3-Placa-coleira-PET-2.jpg",
+      "imgs/produtos/3-Placa-coleira-PET-3.jpg"
+    ]
   }
 ]
