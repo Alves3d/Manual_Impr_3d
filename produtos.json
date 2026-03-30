@@ -8,7 +8,7 @@
     "material": "PLA",
     "tamanho": "10cm",
     "tags": ["pokemon", "brinquedo", "coleção"],
-    "imagem": "imgs/produtos/master-ball.jpg"
+    "imagens": "imgs/produtos/master-ball.jpg"
   },
   {
     "id": 2,
@@ -19,141 +19,9 @@
     "material": "PLA",
     "tamanho": "4cm",
     "tags": ["esporte", "chaveiro", "vôlei"],
-    "imagem": ["imgs/produtos/Caixa-Sibilla-1.jpg",
+    "imagens": ["imgs/produtos/Caixa-Sibilla-1.jpg",
       "imgs/produtos/Caixa-Sibilla-2.jpg",
       "imgs/produtos/Caixa-Sibilla-3.jpg"
     ]
-  },
-  {
-    "id": 3,
-    "nome": "Chaveiro Placa Moto",
-    "categoria": "Chaveiros",
-    "preco": 15,
-    "descricao": "Chaveiro personalizado com placa de moto ou carro. Coloque a placa que quiser — é um presente único e especial.",
-    "material": "PLA",
-    "tamanho": "7cm",
-    "tags": ["personalizado", "carro", "moto", "chaveiro"],
-    "imagem": "imgs/produtos/placa-moto.jpg"
-  },
-  {
-    "id": 4,
-    "nome": "Vaso Decorativo",
-    "categoria": "Decoração",
-    "preco": 35,
-    "descricao": "Vaso decorativo com design moderno e acabamento premium. Disponível em diversas cores para combinar com qualquer ambiente.",
-    "material": "PLA",
-    "tamanho": "15cm",
-    "tags": ["decoração", "vaso", "casa"],
-    "imagem": "imgs/produtos/vaso-decorativo.jpg"
-  },
-  {
-    "id": 5,
-    "nome": "Boneco de Neve Luminária",
-    "categoria": "Decoração",
-    "preco": 55,
-    "descricao": "Boneco de neve decorativo com espaço interno para vela de LED. Lindo para decoração natalina e ambientes aconchegantes.",
-    "material": "PLA",
-    "tamanho": "18cm",
-    "tags": ["natal", "decoração", "luminária"],
-    "imagem": "imgs/produtos/boneco-neve.jpg"
-  },
-  {
-    "id": 6,
-    "nome": "Presépio Iluminado",
-    "categoria": "Decoração",
-    "preco": 120,
-    "descricao": "Presépio completo com iluminação interna em LED. Peça de decoração natalina com acabamento detalhado e beleza incomparável.",
-    "material": "PLA",
-    "tamanho": "25cm",
-    "tags": ["natal", "decoração", "religioso"],
-    "imagem": "imgs/produtos/presepio.jpg"
-  },
-  {
-    "id": 7,
-    "nome": "Dado D20 RPG",
-    "categoria": "Geek & Games",
-    "preco": 25,
-    "descricao": "Dado D20 de RPG impresso em 3D com acabamento detalhado. Perfeito para colecionadores e jogadores de RPG de mesa.",
-    "material": "PLA",
-    "tamanho": "6cm",
-    "tags": ["RPG", "dado", "geek", "jogo"],
-    "imagem": "imgs/produtos/dado-d20.jpg"
-  },
-  {
-    "id": 8,
-    "nome": "Minecraft Steve e Porco",
-    "categoria": "Geek & Games",
-    "preco": 35,
-    "descricao": "Miniaturas articuladas do Steve e Porco do Minecraft. Fielmente reproduzidos com todos os detalhes do jogo.",
-    "material": "PLA",
-    "tamanho": "8cm",
-    "tags": ["Minecraft", "geek", "games", "articulado"],
-    "imagem": "imgs/produtos/minecraft.jpg"
-  },
-  {
-    "id": 9,
-    "nome": "Skin Hueforge Personalizada",
-    "categoria": "Geek & Games",
-    "preco": 50,
-    "descricao": "Arte em camadas estilo Hueforge — transformamos qualquer imagem em uma obra 3D com profundidade de cores impressionante.",
-    "material": "PLA",
-    "tamanho": "15cm",
-    "tags": ["hueforge", "personalizado", "arte", "geek"],
-    "imagem": "imgs/produtos/hueforge.jpg"
-  },
-  {
-    "id": 10,
-    "nome": "Organizador de Mesa Modular",
-    "categoria": "Utilidades",
-    "preco": 45,
-    "descricao": "Organizador modular para mesa de trabalho. Compartimentos para canetas, post-its e acessórios. Prático e elegante.",
-    "material": "PETG",
-    "tamanho": "20cm",
-    "tags": ["organização", "escritório", "mesa"],
-    "imagem": "imgs/produtos/organizador-mesa.jpg"
-  },
-  {
-    "id": 11,
-    "nome": "Suporte para Celular",
-    "categoria": "Utilidades",
-    "preco": 30,
-    "descricao": "Suporte ajustável para celular. Ideal para mesa de trabalho, videochamadas e assistir séries sem segurar o aparelho.",
-    "material": "PETG",
-    "tamanho": "12cm",
-    "tags": ["suporte", "celular", "utilidade"],
-    "imagem": "imgs/produtos/suporte-celular.jpg"
-  },
-  {
-    "id": 12,
-    "nome": "Cachorrinho Maya Personalizado",
-    "categoria": "Presentes",
-    "preco": 55,
-    "descricao": "Miniatura fiel do seu pet com nome personalizado na base. Um presente único e emocionante para quem ama animais.",
-    "material": "PLA",
-    "tamanho": "10cm",
-    "tags": ["pet", "personalizado", "presente", "cachorro"],
-    "imagem": "imgs/produtos/cachorro-maya.jpg"
-  },
-  {
-    "id": 13,
-    "nome": "Placa Corporativa com Logo",
-    "categoria": "Corporativo",
-    "preco": 70,
-    "descricao": "Placa personalizada com logo e nome da empresa. Acabamento profissional em várias cores. Perfeita para recepções e escritórios.",
-    "material": "ABS",
-    "tamanho": "20cm",
-    "tags": ["corporativo", "logo", "placa", "empresa"],
-    "imagem": "imgs/produtos/placa-corporativa.jpg"
-  },
-  {
-    "id": 14,
-    "nome": "Chaveiro personalizado PET",
-    "categoria": "Personalizados",
-    "preco": 12,
-    "descricao": "Chaveiro personalizado do seu PET! Uma peça unica para você.",
-    "material": "PLA",
-    "tamanho": "6cm",
-    "tags": ["presente", "pet", "chaveiro"],
-    "imagem": "imgs/produtos/chaveiro-pet.jpg"
   }
 ]
