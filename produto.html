@@ -142,14 +142,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 <script>
 async function loadProduct() {
   const params = new URLSearchParams(window.location.search);
-  const id = parseInt(params.get('id'));
+  const id = params.get('id');
 
-  if (!id) { showNotFound(); return; }
+  if (!id || id === 'null') { showNotFound(); return; }
 
   try {
     const res = await fetch('produtos.json?v=' + Date.now());
     const products = await res.json();
-    const p = products.find(x => x.id === id);
+    const p = products.find(x => String(x.id) === String(id));
 
     if (!p) { showNotFound(); return; }
 
