@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual de Uso — Alves 3D</title>
+  <style>
+    :root {
+      --blue: #0078FF;
+      --blue-light: #E6F0FF;
+      --blue-mid: #3b97ff;
+      --bg: #F7F7F5;
+      --card: #ffffff;
+      --txt: #1a1a1a;
+      --txt2: #555;
+      --txt3: #888;
+      --border: rgba(0,0,0,0.08);
+      --radius: 14px;
+      --sidebar-w: 260px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+    }
+
+    /* ── SIDEBAR ─────────────────────────────────────── */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--card);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-logo .app-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -0.3px;
+    }
+    .sidebar-logo .app-sub {
+      font-size: 11px;
+      color: var(--txt3);
+      margin-top: 2px;
+    }
+
+    .sidebar nav { padding: 12px 0; flex: 1; }
+
+    .nav-section {
+      padding: 8px 16px 4px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--txt3);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px;
+      font-size: 13.5px;
+      color: var(--txt2);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--blue);
+      background: var(--blue-light);
+      border-left-color: var(--blue);
+    }
+    .nav-link .icon { font-size: 16px; width: 20px; text-align: center; flex-shrink: 0; }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--txt3);
+    }
+
+    /* ── MAIN ────────────────────────────────────────── */
+    .main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0055cc 0%, #0078FF 60%, #3b97ff 100%);
+      color: #fff;
+      padding: 72px 48px 64px;
+    }
+    .hero h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      font-size: 17px;
+      opacity: 0.85;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    .hero-badges {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ── CONTENT AREA ────────────────────────────────── */
+    .content { padding: 48px; max-width: 860px; }
+
+    /* ── SECTION ─────────────────────────────────────── */
+    .section { margin-bottom: 64px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .section-icon {
+      width: 46px; height: 46px;
+      border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--txt);
+      letter-spacing: -0.3px;
+    }
+    .section-header p {
+      font-size: 13px;
+      color: var(--txt3);
+      margin-top: 2px;
+    }
+
+    /* ── CARD ────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--txt3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    /* ── STEP LIST ───────────────────────────────────── */
+    .steps { list-style: none; }
+    .steps li {
+      display: flex;
+      gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .step-body strong { font-size: 14px; display: block; color: var(--txt); }
+    .step-body span { font-size: 13px; color: var(--txt2); line-height: 1.5; }
+
+    /* ── TIP / NOTE ──────────────────────────────────── */
+    .tip {
+      display: flex;
+      gap: 12px;
+      background: var(--blue-light);
+      border: 1px solid rgba(0,120,255,0.18);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #003f8a;
+      line-height: 1.55;
+    }
+    .tip .tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+    .warn {
+      background: #fffbeb;
+      border: 1px solid rgba(217,119,6,0.25);
+      color: #92400e;
+    }
+
+    /* ── FEATURE GRID ────────────────────────────────── */
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .feat-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px;
+    }
+    .feat-card .feat-icon { font-size: 24px; margin-bottom: 8px; }
+    .feat-card h4 { font-size: 13px; font-weight: 700; color: var(--txt); margin-bottom: 4px; }
+    .feat-card p { font-size: 12px; color: var(--txt2); line-height: 1.5; }
+
+    /* ── INFO TABLE ──────────────────────────────────── */
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table th, .info-table td {
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-table th {
+      background: var(--bg);
+      font-weight: 700;
+      color: var(--txt3);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.4px;
+    }
+    .info-table td { color: var(--txt2); }
+    .info-table tr:last-child td { border-bottom: none; }
+
+    /* ── PILL / TAG ──────────────────────────────────── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 2px;
+    }
+    .pill-blue   { background:#E6F0FF; color:#0055cc; }
+    .pill-green  { background:#f0fdf4; color:#15803d; }
+    .pill-yellow { background:#fffbeb; color:#b45309; }
+    .pill-red    { background:#fef2f2; color:#b91c1c; }
+    .pill-purple { background:#f5f3ff; color:#6d28d9; }
+    .pill-gray   { background:#F7F7F5; color:#555; border:1px solid var(--border); }
+
+    /* ── DIVIDER ─────────────────────────────────────── */
+    hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+    /* ── INLINE CODE ─────────────────────────────────── */
+    code {
+      background: #f0f0ee;
+      border-radius: 5px;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: #d63f3f;
+    }
+
+    /* ── TOP BAR (mobile) ────────────────────────────── */
+    .topbar {
+      display: none;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar .app-name { font-size: 16px; font-weight: 800; color: var(--blue); }
+    #menu-toggle { background: none; border: none; cursor: pointer; font-size: 22px; }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav-inner {
+      background: var(--card);
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      overflow-y: auto;
+      padding-bottom: 40px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .topbar { display: flex; }
+      .main { margin-left: 0; }
+      .hero { padding: 40px 24px 36px; }
+      .hero h1 { font-size: 28px; }
+      .content { padding: 24px 20px; }
+      .feat-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .feat-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SCROLL SPY ACTIVE ───────────────────────────── */
+    .nav-link.active {
+      color: var(--blue);
+      background: var(--blue-light);
+      border-left-color: var(--blue);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="app-name">🖨️ Alves 3D</div>
+    <div class="app-sub">Manual de Uso · v1.0</div>
+  </div>
+
+  <nav>
+    <div class="nav-section">Início</div>
+    <a class="nav-link active" href="#inicio">
+      <span class="icon">🏠</span> Visão Geral
+    </a>
+    <a class="nav-link" href="#primeiros-passos">
+      <span class="icon">🚀</span> Primeiros passos
+    </a>
+
+    <div class="nav-section">Telas</div>
+    <a class="nav-link" href="#dashboard">
+      <span class="icon">📊</span> Dashboard
+    </a>
+    <a class="nav-link" href="#vendas">
+      <span class="icon">🛒</span> Vendas
+    </a>
+    <a class="nav-link" href="#nova-venda">
+      <span class="icon">➕</span> Nova Venda
+    </a>
+    <a class="nav-link" href="#producao">
+      <span class="icon">⚙️</span> Produção
+    </a>
+    <a class="nav-link" href="#estoque">
+      <span class="icon">📦</span> Estoque
+    </a>
+    <a class="nav-link" href="#clientes">
+      <span class="icon">👥</span> Clientes
+    </a>
+    <a class="nav-link" href="#pecas">
+      <span class="icon">🧊</span> Peças
+    </a>
+    <a class="nav-link" href="#precificador">
+      <span class="icon">🧮</span> Precificador
+    </a>
+    <a class="nav-link" href="#orcamentos">
+      <span class="icon">📄</span> Orçamentos
+    </a>
+    <a class="nav-link" href="#cobrancas">
+      <span class="icon">💰</span> Cobranças
+    </a>
+    <a class="nav-link" href="#relatorios">
+      <span class="icon">📈</span> Relatórios
+    </a>
+
+    <div class="nav-section">Configurações</div>
+    <a class="nav-link" href="#configuracoes">
+      <span class="icon">⚙️</span> Configurações
+    </a>
+    <a class="nav-link" href="#premium">
+      <span class="icon">💎</span> Plano Premium
+    </a>
+    <a class="nav-link" href="#duvidas">
+      <span class="icon">❓</span> Dúvidas frequentes
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    Alves 3D · Gestão de impressão<br>
+    <a href="https://alves3d.vercel.app" style="color:var(--blue);text-decoration:none;">Abrir aplicativo →</a>
+  </div>
+</aside>
+
+<!-- ══════════════════════ MOBILE TOPBAR ════════════════════════════ -->
+<div class="topbar">
+  <button id="menu-toggle">☰</button>
+  <span class="app-name">🖨️ Alves 3D · Manual</span>
+</div>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-inner">
+    <div class="sidebar-logo" style="padding:20px 16px 14px;">
+      <div class="app-name">🖨️ Alves 3D</div>
+      <div class="app-sub">Manual de Uso</div>
+    </div>
+    <nav id="mobile-nav-links" style="padding:8px 0;">
+      <div class="nav-section">Início</div>
+      <a class="nav-link" href="#inicio">🏠 Visão Geral</a>
+      <a class="nav-link" href="#primeiros-passos">🚀 Primeiros passos</a>
+      <div class="nav-section">Telas</div>
+      <a class="nav-link" href="#dashboard">📊 Dashboard</a>
+      <a class="nav-link" href="#vendas">🛒 Vendas</a>
+      <a class="nav-link" href="#nova-venda">➕ Nova Venda</a>
+      <a class="nav-link" href="#producao">⚙️ Produção</a>
+      <a class="nav-link" href="#estoque">📦 Estoque</a>
+      <a class="nav-link" href="#clientes">👥 Clientes</a>
+      <a class="nav-link" href="#pecas">🧊 Peças</a>
+      <a class="nav-link" href="#precificador">🧮 Precificador</a>
+      <a class="nav-link" href="#orcamentos">📄 Orçamentos</a>
+      <a class="nav-link" href="#cobrancas">💰 Cobranças</a>
+      <a class="nav-link" href="#relatorios">📈 Relatórios</a>
+      <div class="nav-section">Configurações</div>
+      <a class="nav-link" href="#configuracoes">⚙️ Configurações</a>
+      <a class="nav-link" href="#premium">💎 Premium</a>
+      <a class="nav-link" href="#duvidas">❓ Dúvidas</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ MAIN ════════════════════════════════ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero" id="inicio">
+    <h1>Manual de Uso<br>Alves 3D</h1>
+    <p>Guia completo para gerenciar seu negócio de impressão 3D: vendas, produção, estoque, clientes, precificação e muito mais.</p>
+    <div class="hero-badges">
+      <span class="badge">📱 App Web &amp; Mobile</span>
+      <span class="badge">☁️ Dados em nuvem</span>
+      <span class="badge">🖨️ Impressão 3D FDM</span>
+      <span class="badge">🇧🇷 Português</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ── VISÃO GERAL ──────────────────────────────────── -->
+    <section class="section" id="inicio-sec">
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-icon">📊</div>
+          <h4>Dashboard inteligente</h4>
+          <p>Receita, pedidos e ranking de peças filtrados por mês com um toque.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🛒</div>
+          <h4>Gestão de vendas</h4>
+          <p>Crie pedidos com múltiplos itens, cores, materiais e datas precisas.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">⚙️</div>
+          <h4>Produção kanban</h4>
+          <p>Acompanhe cada pedido de Projeto até Concluído com status visuais.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📦</div>
+          <h4>Controle de estoque</h4>
+          <p>Registre entradas de filamento por cor e material, acompanhe o consumo.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🧮</div>
+          <h4>Precificador</h4>
+          <p>Calcule preços com margem, energia, desperdício e taxas de marketplace.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">💰</div>
+          <h4>Cobranças Pix</h4>
+          <p>Veja quem está devendo e gere mensagem de cobrança com link Pix.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRIMEIROS PASSOS ────────────────────────────── -->
+    <section class="section" id="primeiros-passos">
+      <div class="section-header">
+        <div class="section-icon" style="background:#E6F0FF;">🚀</div>
+        <div>
+          <h2>Primeiros passos</h2>
+          <p>Configure o app em menos de 5 minutos</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Configuração inicial recomendada</div>
+        <ul class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Crie sua conta</strong>
+              <span>Acesse o app, toque em "Criar conta" e informe seu e-mail e senha. Confirme pelo e-mail recebido.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Cadastre suas impressoras e materiais</strong>
+              <span>Vá em <strong>Mais → Configurações</strong> e cadastre as impressoras e materiais (ex.: PLA, PETG, ABS) que você usa. Eles aparecem como opções ao registrar pedidos.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Cadastre suas peças (catálogo)</strong>
+              <span>Acesse <strong>Mais → Peças</strong> e adicione os modelos que você imprime com frequência: código, descrição, peso, dimensões e tempo estimado de impressão.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <strong>Adicione seus clientes</strong>
+              <span>Em <strong>Mais → Clientes</strong>, cadastre o nome e contato de cada cliente. Isso permite associar pedidos a clientes e gerar cobranças.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <strong>Dê entrada no seu estoque de filamento</strong>
+              <span>Em <strong>Mais → Estoque</strong>, registre o filamento que você tem: material, cor, quantidade em gramas e custo por kg.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">6</div>
+            <div class="step-body">
+              <strong>Configure sua chave Pix</strong>
+              <span>Em <strong>Mais → Configurações</strong>, informe sua chave Pix para que o módulo de Cobranças possa gerar mensagens automáticas para seus clientes.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">💡</div>
+        <div>
+          Todos os dados ficam salvos na nuvem (Supabase). Você pode acessar o app de qualquer dispositivo — celular, tablet ou navegador web — sem perder nada.
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- ── DASHBOARD ──────────────────────────────────── -->
+    <section class="section" id="dashboard">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f5f3ff;">📊</div>
+        <div>
+          <h2>Dashboard</h2>
+          <p>Visão financeira e operacional do seu negócio</p>
+        </div>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">📅</div>
+        <div>
+          Use o <strong>filtro de mês</strong> no topo (ex.: "Mai/26", "Abr/26") para ver os números de um período específico. O filtro usa a <strong>data do pedido</strong>, não a data de cadastro.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">O que você vê no dashboard</div>
+        <table class="info-table">
+          <thead>
+            <tr><th>Indicador</th><th>O que significa</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>💰 <strong>Receita</strong></td><td>Soma do valor final de todos os pedidos no período selecionado.</td></tr>
+            <tr><td>📦 <strong>Pedidos</strong></td><td>Quantidade total de vendas registradas no período.</td></tr>
+            <tr><td>👥 <strong>Clientes</strong></td><td>Número de clientes distintos que fizeram pedidos no período.</td></tr>
+            <tr><td>⚡ <strong>Lucro estimado</strong></td><td>Receita menos custo estimado de material (calculado pelo peso das peças).</td></tr>
+            <tr><td>🏆 <strong>Top 5 peças</strong></td><td>As 5 peças mais pedidas em quantidade no período.</td></tr>
+            <tr><td>👑 <strong>Top 10 clientes</strong></td><td>Os 10 clientes que mais gastaram em valor no período.</td></tr>
+            <tr><td>🧵 <strong>Filamento por material</strong></td><td>Total de gramas impressas por tipo de material no período.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── VENDAS ──────────────────────────────────────── -->
+    <section class="section" id="vendas">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f0fdf4;">🛒</div>
+        <div>
+          <h2>Vendas</h2>
+          <p>Listagem e edição de todos os pedidos</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Filtros de status</div>
+        <ul class="steps">
+          <li><div class="step-num" style="background:#6366f1">P</div><div class="step-body"><strong>Projeto</strong><span> — Pedido recebido, aguardando iniciar a impressão.</span></div></li>
+          <li><div class="step-num" style="background:#d97706">F</div><div class="step-body"><strong>Fabricação</strong><span> — Peça sendo impressa no momento.</span></div></li>
+          <li><div class="step-num" style="background:#0078FF">A</div><div class="step-body"><strong>Aguardando retirada</strong><span> — Impressão concluída, aguardando o cliente buscar.</span></div></li>
+          <li><div class="step-num" style="background:#16a34a">✓</div><div class="step-body"><strong>Concluído</strong><span> — Pedido entregue e finalizado.</span></div></li>
+          <li><div class="step-num" style="background:#dc2626">✕</div><div class="step-body"><strong>Cancelado</strong><span> — Pedido cancelado.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Editando um pedido</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Toque no pedido</strong><span> — Abre o painel lateral de detalhes.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Edite a data</strong><span> — Toque na data para abrir o calendário e corrigir se necessário.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Edite itens</strong><span> — Cada item pode ter quantidade, valor, material, impressora e cores alterados.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Altere o status de pagamento</strong><span> — Marque "Pago", "Parcial" ou "Pendente" e informe o valor recebido.</span></div></li>
+          <li><div class="step-num">5</div><div class="step-body"><strong>Salve</strong><span> — Toque em "Salvar alterações". Uma confirmação verde aparecerá na tela.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">🎨</div>
+        <div>
+          Cada item de um pedido pode ter <strong>múltiplas cores</strong> de filamento. Toque no botão de cores do item para abrir o seletor e escolha quantas quiser.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NOVA VENDA ──────────────────────────────────── -->
+    <section class="section" id="nova-venda">
+      <div class="section-header">
+        <div class="section-icon" style="background:#E6F0FF;">➕</div>
+        <div>
+          <h2>Nova Venda</h2>
+          <p>Como registrar um pedido do zero</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Passo a passo</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Selecione o cliente</strong><span> — Escolha da lista de clientes cadastrados ou deixe em branco para venda avulsa.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Defina a data do pedido</strong><span> — Toque no campo de data para abrir o calendário e escolha o dia correto. Isso garante que o pedido apareça no dashboard do mês certo.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Adicione os itens</strong><span> — Toque em "+ Adicionar item". Para cada item informe: peça, quantidade, valor unitário, material, impressora e cores.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Seleção de cores por item</strong><span> — Toque em "Cores" dentro do item. Um seletor em grade permite escolher uma ou mais cores de filamento para aquele item específico.</span></div></li>
+          <li><div class="step-num">5</div><div class="step-body"><strong>Informe o valor final</strong><span> — O total pode ser ajustado manualmente (desconto, frete, etc.).</span></div></li>
+          <li><div class="step-num">6</div><div class="step-body"><strong>Escolha o status inicial</strong><span> — Normalmente "Projeto" para novos pedidos.</span></div></li>
+          <li><div class="step-num">7</div><div class="step-body"><strong>Adicione observações</strong><span> — Campo livre para instruções especiais do cliente.</span></div></li>
+          <li><div class="step-num">8</div><div class="step-body"><strong>Salvar ou Orçar</strong><span> — "Salvar pedido" registra imediatamente. "Gerar orçamento" cria um orçamento para aprovação antes de virar pedido.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tip warn">
+        <div class="tip-icon">⚠️</div>
+        <div>
+          Sempre selecione a data pelo <strong>calendário</strong>. Isso evita erros de formatação e garante que o pedido seja contabilizado no mês correto do dashboard.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRODUÇÃO ────────────────────────────────────── -->
+    <section class="section" id="producao">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fffbeb;">⚙️</div>
+        <div>
+          <h2>Produção</h2>
+          <p>Acompanhe pedidos em andamento</p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--txt2);margin-bottom:16px;">
+        A tela de Produção mostra apenas pedidos com status <span class="pill pill-purple">Projeto</span> e <span class="pill pill-yellow">Fabricação</span>. Ela é o painel operacional do dia a dia.
+      </p>
+
+      <div class="card">
+        <div class="card-title">Como usar</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Veja a fila</strong><span> — Pedidos em Fabricação aparecem no topo (urgentes), seguidos pelos em Projeto.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Toque em um pedido</strong><span> — Abre os detalhes completos: cliente, peças, cores por item, material e impressora.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Veja as cores de cada item</strong><span> — Chips coloridos mostram quais filamentos usar em cada peça do pedido.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Avance o status</strong><span> — Toque nas opções de status (Projeto → Fabricação → Concluído) para atualizar onde o pedido está.</span></div></li>
+          <li><div class="step-num">5</div><div class="step-body"><strong>Salve</strong><span> — Toque "Salvar". Pedidos marcados como Concluído ou Cancelado saem automaticamente da tela de Produção.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">🎨</div>
+        <div>
+          Para pedidos com <strong>múltiplos itens</strong>, cada item é listado separadamente com seu próprio código, nome, quantidade, material, impressora e cores — facilitando a execução na bancada.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ESTOQUE ─────────────────────────────────────── -->
+    <section class="section" id="estoque">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fef9c3;">📦</div>
+        <div>
+          <h2>Estoque</h2>
+          <p>Controle de filamentos e consumíveis</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Dar entrada de filamento</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Toque em "+ Entrada"</strong><span> — Abre o formulário de entrada de estoque.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Selecione o material</strong><span> — PLA, PETG, ABS, ASA etc. (materiais cadastrados em Configurações).</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Escolha a cor</strong><span> — Grade visual com 19 cores. Selecione a cor do carretel que está entrando.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Informe a quantidade</strong><span> — Em gramas (ex.: 1000 para 1 kg).</span></div></li>
+          <li><div class="step-num">5</div><div class="step-body"><strong>Informe o custo</strong><span> — Valor pago pelo filamento em R$/kg (usado no cálculo de lucro).</span></div></li>
+          <li><div class="step-num">6</div><div class="step-body"><strong>Salve</strong><span> — O saldo atualiza imediatamente na lista.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Saída / consumo</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Toque em "Saída"</strong><span> — Para registrar consumo de filamento fora de um pedido específico.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Informe o material e a quantidade consumida</strong><span> — O sistema desconta do saldo atual.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">📊</div>
+        <div>
+          O estoque mostra o <strong>saldo atual em gramas</strong> por material e cor. O consumo dos pedidos é calculado automaticamente pelo peso das peças cadastradas.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CLIENTES ────────────────────────────────────── -->
+    <section class="section" id="clientes">
+      <div class="section-header">
+        <div class="section-icon" style="background:#e0f2fe;">👥</div>
+        <div>
+          <h2>Clientes</h2>
+          <p>Cadastro e histórico de compradores</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Campos do cadastro</div>
+        <table class="info-table">
+          <thead><tr><th>Campo</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Nome</strong></td><td>Nome completo ou apelido do cliente.</td></tr>
+            <tr><td><strong>Contato</strong></td><td>Telefone, WhatsApp ou e-mail. Usado para gerar mensagens de cobrança.</td></tr>
+            <tr><td><strong>Observações</strong></td><td>Anotações internas: preferências, endereço, informações especiais.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">💡</div>
+        <div>
+          Ao abrir um cliente, você vê o <strong>histórico completo de pedidos</strong> e o total gasto. Use isso para identificar seus melhores clientes.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PEÇAS ──────────────────────────────────────── -->
+    <section class="section" id="pecas">
+      <div class="section-header">
+        <div class="section-icon" style="background:#ede9fe;">🧊</div>
+        <div>
+          <h2>Peças</h2>
+          <p>Catálogo de modelos que você imprime</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Campos do cadastro de peça</div>
+        <table class="info-table">
+          <thead><tr><th>Campo</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Código</strong></td><td>Identificador único da peça (ex.: M-A4B1). Gerado automaticamente, mas pode ser editado.</td></tr>
+            <tr><td><strong>Descrição</strong></td><td>Nome da peça (ex.: "Suporte para mesa", "Vaso geométrico P").</td></tr>
+            <tr><td><strong>Categoria</strong></td><td>Classificação: Decoração, Utensílio, Acessório, Brinquedo etc.</td></tr>
+            <tr><td><strong>Peso (g)</strong></td><td>Peso em gramas do material necessário. Usado no cálculo de custo e consumo de filamento.</td></tr>
+            <tr><td><strong>Dimensões (mm)</strong></td><td>Tamanho da peça (comprimento × largura × altura).</td></tr>
+            <tr><td><strong>Tempo de impressão</strong></td><td>Horas estimadas de impressão. Usado no Precificador.</td></tr>
+            <tr><td><strong>Custo de material</strong></td><td>Custo calculado automaticamente a partir do peso e do preço do filamento.</td></tr>
+            <tr><td><strong>Observações</strong></td><td>Configurações de impressão, notas do slicer, links de arquivo etc.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">🔗</div>
+        <div>
+          Ao criar um pedido, você pode vincular cada item a uma peça do catálogo. Isso preenche automaticamente o peso, tempo e código, agilizando o cadastro de vendas.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRECIFICADOR ───────────────────────────────── -->
+    <section class="section" id="precificador">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fef3c7;">🧮</div>
+        <div>
+          <h2>Precificador</h2>
+          <p>Calcule o preço ideal para cada peça</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Variáveis do cálculo</div>
+        <table class="info-table">
+          <thead><tr><th>Variável</th><th>O que é</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Peso (g)</strong></td><td>Gramas de filamento usados na peça.</td></tr>
+            <tr><td><strong>Tempo (h)</strong></td><td>Horas de impressão estimadas.</td></tr>
+            <tr><td><strong>Material selecionado</strong></td><td>Define o custo do filamento por grama (baseado no preço cadastrado em estoque/configurações).</td></tr>
+            <tr><td><strong>Margem de lucro (%)</strong></td><td>Percentual de lucro desejado sobre o custo total.</td></tr>
+            <tr><td><strong>Tarifa de energia</strong></td><td>R$/kWh da sua conta de luz (padrão R$ 0,74).</td></tr>
+            <tr><td><strong>Overhead (%)</strong></td><td>Custos fixos indiretos (aluguel, desgaste da impressora etc.).</td></tr>
+            <tr><td><strong>Desperdício (%)</strong></td><td>Percentual para cobrir falhas de impressão e suportes descartados.</td></tr>
+            <tr><td><strong>Falha (%)</strong></td><td>Taxa de reimpressão por defeito.</td></tr>
+            <tr><td><strong>Custos extras</strong></td><td>Adicione itens avulsos: pós-processamento, embalagem, frete etc.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Plataformas de venda</div>
+        <p style="padding:14px 18px;font-size:13px;color:var(--txt2);">
+          O Precificador simula automaticamente o preço necessário para diferentes canais, já embutindo as taxas de cada plataforma:
+        </p>
+        <table class="info-table">
+          <thead><tr><th>Plataforma</th><th>Taxa padrão</th></tr></thead>
+          <tbody>
+            <tr><td>Mercado Livre Grátis</td><td>11% + R$ 5,00</td></tr>
+            <tr><td>Mercado Livre Clássico</td><td>13% + R$ 5,00</td></tr>
+            <tr><td>Shopee</td><td>14% + R$ 2,00</td></tr>
+            <tr><td>Personalizada</td><td>Configure você mesmo</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">💡</div>
+        <div>
+          Após calcular o preço, você pode <strong>salvar diretamente como peça</strong> no catálogo, com o código, descrição e custo já preenchidos.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ORÇAMENTOS ──────────────────────────────────── -->
+    <section class="section" id="orcamentos">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fff7ed;">📄</div>
+        <div>
+          <h2>Orçamentos</h2>
+          <p>Envie propostas antes de confirmar o pedido</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Fluxo de orçamento</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Crie um orçamento</strong><span> — Em "Nova Venda", toque em "Gerar orçamento" em vez de "Salvar pedido".</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Compartilhe com o cliente</strong><span> — Gere o PDF do orçamento e envie por WhatsApp, e-mail ou outro canal.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Aguarde aprovação</strong><span> — O status fica como <span class="pill pill-yellow">Pendente</span> enquanto aguarda resposta.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Converta em pedido</strong><span> — Quando o cliente aprovar, mude o status para <span class="pill pill-green">Aprovado</span> e confirme a conversão em venda.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Status dos orçamentos</div>
+        <div style="padding:14px 18px;display:flex;gap:10px;flex-wrap:wrap;">
+          <span class="pill pill-yellow">⏳ Pendente</span>
+          <span class="pill pill-green">✅ Aprovado</span>
+          <span class="pill pill-red">❌ Recusado</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COBRANÇAS ──────────────────────────────────── -->
+    <section class="section" id="cobrancas">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f0fdf4;">💰</div>
+        <div>
+          <h2>Cobranças</h2>
+          <p>Pedidos entregues com pagamento pendente</p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--txt2);margin-bottom:16px;">
+        A tela de Cobranças mostra automaticamente todos os pedidos que foram marcados como <strong>entregues</strong> mas ainda estão como <strong>Pendente</strong> ou <strong>Parcial</strong> no pagamento, agrupados por cliente.
+      </p>
+
+      <div class="card">
+        <div class="card-title">Como cobrar com Pix</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Configure sua chave Pix</strong><span> — Em Configurações, informe sua chave (CPF, e-mail, telefone ou aleatória).</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Abra a cobrança de um cliente</strong><span> — Toque no cliente para ver os pedidos em aberto e o total devido.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Gere a mensagem de cobrança</strong><span> — O app monta automaticamente uma mensagem amigável com o valor e a chave Pix para você copiar e enviar.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Marque como pago</strong><span> — Após receber, abra o pedido em Vendas e atualize o status de pagamento para "Pago".</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── RELATÓRIOS ──────────────────────────────────── -->
+    <section class="section" id="relatorios">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f5f3ff;">📈</div>
+        <div>
+          <h2>Relatórios</h2>
+          <p>Análises detalhadas do seu negócio <span class="pill pill-purple" style="vertical-align:middle;">💎 Premium</span></p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--txt2);margin-bottom:16px;">
+        O módulo de Relatórios oferece análises avançadas com filtros personalizados por período, material, cliente e peça.
+      </p>
+
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-icon">📅</div>
+          <h4>Receita por período</h4>
+          <p>Gráfico de receita diária, semanal ou mensal.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🧵</div>
+          <h4>Consumo de filamento</h4>
+          <p>Gramas usadas por material e cor em qualquer período.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🏆</div>
+          <h4>Ranking de peças</h4>
+          <p>Quais modelos geram mais receita e são mais pedidos.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">👥</div>
+          <h4>Análise de clientes</h4>
+          <p>LTV e frequência de compra por cliente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONFIGURAÇÕES ──────────────────────────────── -->
+    <section class="section" id="configuracoes">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f1f5f9;">⚙️</div>
+        <div>
+          <h2>Configurações</h2>
+          <p>Personalize o app para o seu negócio</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">O que você configura</div>
+        <table class="info-table">
+          <thead><tr><th>Configuração</th><th>Descrição</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Impressoras</strong></td><td>Cadastre suas máquinas (ex.: Ender 3, Bambu Lab P1P). Aparecem como opção ao criar pedidos.</td></tr>
+            <tr><td><strong>Materiais</strong></td><td>Tipos de filamento que você usa (PLA, PETG, TPU…). Aparecem nos pedidos, estoque e precificador.</td></tr>
+            <tr><td><strong>Chave Pix</strong></td><td>Sua chave Pix para geração automática de mensagens de cobrança.</td></tr>
+            <tr><td><strong>Nome do negócio</strong></td><td>Nome que aparece nos orçamentos em PDF.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── PREMIUM ─────────────────────────────────────── -->
+    <section class="section" id="premium">
+      <div class="section-header">
+        <div class="section-icon" style="background:#ede9fe;">💎</div>
+        <div>
+          <h2>Plano Premium</h2>
+          <p>Recursos avançados para quem quer crescer</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">O que muda no Premium</div>
+        <table class="info-table">
+          <thead><tr><th>Recurso</th><th>Gratuito</th><th>Premium</th></tr></thead>
+          <tbody>
+            <tr><td>Vendas e pedidos</td><td>✅ Ilimitado</td><td>✅ Ilimitado</td></tr>
+            <tr><td>Clientes</td><td>✅ Ilimitado</td><td>✅ Ilimitado</td></tr>
+            <tr><td>Peças no catálogo</td><td>✅ Ilimitado</td><td>✅ Ilimitado</td></tr>
+            <tr><td>Precificador</td><td>✅ Completo</td><td>✅ Completo</td></tr>
+            <tr><td>Orçamentos</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Estoque</td><td>🔒 Limitado</td><td>✅ Completo</td></tr>
+            <tr><td>Relatórios avançados</td><td>🔒</td><td>✅</td></tr>
+            <tr><td>Cobranças Pix</td><td>🔒</td><td>✅</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">💎</div>
+        <div>
+          Para ativar o Premium, acesse <strong>Mais → Seja Premium</strong> e siga as instruções de pagamento. A ativação é imediata após confirmação.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DÚVIDAS FREQUENTES ─────────────────────────── -->
+    <section class="section" id="duvidas">
+      <div class="section-header">
+        <div class="section-icon" style="background:#f0fdf4;">❓</div>
+        <div>
+          <h2>Dúvidas frequentes</h2>
+          <p>Respostas para as perguntas mais comuns</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <ul class="steps">
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>O pedido não aparece no dashboard do mês correto</strong>
+              <span>Verifique se a <strong>data do pedido</strong> foi selecionada corretamente pelo calendário. O dashboard filtra pela data do pedido, não pela data de cadastro no sistema.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>Posso usar o app no computador?</strong>
+              <span>Sim! Acesse <a href="https://alves3d.vercel.app" style="color:var(--blue);">alves3d.vercel.app</a> em qualquer navegador. O app funciona na web com todas as funcionalidades.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>Meus dados são seguros?</strong>
+              <span>Sim. Os dados ficam armazenados no Supabase (PostgreSQL em nuvem) com autenticação por e-mail e senha. Nenhum outro usuário acessa seus dados.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>Como adicionar mais de uma cor em um item?</strong>
+              <span>Ao criar ou editar um pedido, toque no botão <strong>"Cores"</strong> dentro do item desejado. O seletor permite marcar várias cores. Toque em "Confirmar" quando terminar.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>Um pedido com vários itens não está mostrando todos na produção</strong>
+              <span>Certifique-se de que os itens foram salvos corretamente com "+ Adicionar item" antes de salvar o pedido. Na tela de Produção, ao abrir o pedido, cada item terá seu próprio card detalhado.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>Como gerar um orçamento em PDF?</strong>
+              <span>Crie um orçamento em Nova Venda e acesse a lista de Orçamentos. Abra o orçamento desejado e toque em "Exportar PDF". O arquivo pode ser compartilhado por qualquer app.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>Esqueci minha senha. O que fazer?</strong>
+              <span>Na tela de login, toque em "Esqueci a senha". Informe seu e-mail e você receberá um link para redefinir.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div style="text-align:center;padding:32px 0 16px;">
+        <p style="font-size:14px;color:var(--txt3);margin-bottom:16px;">Ainda tem dúvidas? Fale pelo WhatsApp:</p>
+        <a href="https://alves3d.vercel.app" style="
+          display:inline-block;background:var(--blue);color:#fff;
+          text-decoration:none;border-radius:12px;padding:14px 28px;
+          font-size:15px;font-weight:700;
+        ">Abrir o aplicativo →</a>
+      </div>
+    </section>
+
+  </div><!-- /content -->
+</main>
+
+<script>
+  // ── Mobile menu toggle ──────────────────────────────
+  const toggle = document.getElementById('menu-toggle')
+  const mobileNav = document.getElementById('mobile-nav')
+  toggle.addEventListener('click', () => mobileNav.classList.toggle('open'))
+  mobileNav.addEventListener('click', e => {
+    if (e.target === mobileNav) mobileNav.classList.remove('open')
+  })
+  document.querySelectorAll('#mobile-nav-links .nav-link').forEach(a => {
+    a.addEventListener('click', () => mobileNav.classList.remove('open'))
+  })
+
+  // ── Scroll spy ─────────────────────────────────────
+  const sections = [
+    ['inicio', '#inicio'],
+    ['primeiros-passos', '#primeiros-passos'],
+    ['dashboard', '#dashboard'],
+    ['vendas', '#vendas'],
+    ['nova-venda', '#nova-venda'],
+    ['producao', '#producao'],
+    ['estoque', '#estoque'],
+    ['clientes', '#clientes'],
+    ['pecas', '#pecas'],
+    ['precificador', '#precificador'],
+    ['orcamentos', '#orcamentos'],
+    ['cobrancas', '#cobrancas'],
+    ['relatorios', '#relatorios'],
+    ['configuracoes', '#configuracoes'],
+    ['premium', '#premium'],
+    ['duvidas', '#duvidas'],
+  ]
+
+  const sidebarLinks = document.querySelectorAll('.sidebar .nav-link')
+
+  function onScroll() {
+    const scrollY = window.scrollY + 80
+    let current = 'inicio'
+    for (const [id, _] of sections) {
+      const el = document.getElementById(id) || document.querySelector(`[id="${id}"]`)
+      if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) current = id
+    }
+    sidebarLinks.forEach(a => {
+      const href = a.getAttribute('href').replace('#', '')
+      a.classList.toggle('active', href === current)
+    })
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+</script>
+
+</body>
+</html>
