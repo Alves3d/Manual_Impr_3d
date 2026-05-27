@@ -9,6 +9,8 @@
       --blue: #0078FF;
       --blue-light: #E6F0FF;
       --blue-mid: #3b97ff;
+      --orange: #E85D04;
+      --orange-light: #fff7ed;
       --bg: #F7F7F5;
       --card: #ffffff;
       --txt: #1a1a1a;
@@ -232,6 +234,12 @@
       color: #92400e;
     }
 
+    .tip-orange {
+      background: var(--orange-light);
+      border: 1px solid rgba(232,93,4,0.2);
+      color: #7c2d12;
+    }
+
     /* ── FEATURE GRID ────────────────────────────────── */
     .feat-grid {
       display: grid;
@@ -284,6 +292,7 @@
     .pill-yellow { background:#fffbeb; color:#b45309; }
     .pill-red    { background:#fef2f2; color:#b91c1c; }
     .pill-purple { background:#f5f3ff; color:#6d28d9; }
+    .pill-orange { background:#fff7ed; color:#c2410c; }
     .pill-gray   { background:#F7F7F5; color:#555; border:1px solid var(--border); }
 
     /* ── DIVIDER ─────────────────────────────────────── */
@@ -359,7 +368,7 @@
 <aside class="sidebar">
   <div class="sidebar-logo">
     <div class="app-name">🖨️ Alves 3D</div>
-    <div class="app-sub">Manual de Uso · v1.0</div>
+    <div class="app-sub">Manual de Uso · v2.0</div>
   </div>
 
   <nav>
@@ -402,6 +411,12 @@
     <a class="nav-link" href="#cobrancas">
       <span class="icon">💰</span> Cobranças
     </a>
+    <a class="nav-link" href="#impressoes">
+      <span class="icon">🖨️</span> Impressões
+    </a>
+    <a class="nav-link" href="#tarefas">
+      <span class="icon">📋</span> Tarefas
+    </a>
     <a class="nav-link" href="#relatorios">
       <span class="icon">📈</span> Relatórios
     </a>
@@ -419,7 +434,7 @@
   </nav>
 
   <div class="sidebar-footer">
-    Alves 3D · Gestão de impressão<br>
+    Alves 3D · Gestão de impressão 3D<br>
     <a href="https://alves3d.vercel.app" style="color:var(--blue);text-decoration:none;">Abrir aplicativo →</a>
   </div>
 </aside>
@@ -452,6 +467,8 @@
       <a class="nav-link" href="#precificador">🧮 Precificador</a>
       <a class="nav-link" href="#orcamentos">📄 Orçamentos</a>
       <a class="nav-link" href="#cobrancas">💰 Cobranças</a>
+      <a class="nav-link" href="#impressoes">🖨️ Impressões</a>
+      <a class="nav-link" href="#tarefas">📋 Tarefas</a>
       <a class="nav-link" href="#relatorios">📈 Relatórios</a>
       <div class="nav-section">Configurações</div>
       <a class="nav-link" href="#configuracoes">⚙️ Configurações</a>
@@ -467,7 +484,7 @@
   <!-- HERO -->
   <div class="hero" id="inicio">
     <h1>Manual de Uso<br>Alves 3D</h1>
-    <p>Guia completo para gerenciar seu negócio de impressão 3D: vendas, produção, estoque, clientes, precificação e muito mais.</p>
+    <p>Guia completo para gerenciar seu negócio de impressão 3D: vendas, produção, estoque, clientes, precificação, tarefas e muito mais.</p>
     <div class="hero-badges">
       <span class="badge">📱 App Web &amp; Mobile</span>
       <span class="badge">☁️ Dados em nuvem</span>
@@ -510,6 +527,16 @@
           <div class="feat-icon">💰</div>
           <h4>Cobranças Pix</h4>
           <p>Veja quem está devendo e gere mensagem de cobrança com link Pix.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🖨️</div>
+          <h4>Registro de impressões</h4>
+          <p>Registre cada impressão realizada, falhas e materiais consumidos.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">📋</div>
+          <h4>Tarefas <span class="pill pill-purple" style="font-size:10px;">Premium</span></h4>
+          <p>Organize encomendas, prazos, checklists e prioridades por cliente.</p>
         </div>
       </div>
     </section>
@@ -613,6 +640,7 @@
             <tr><td>🏆 <strong>Top 5 peças</strong></td><td>As 5 peças mais pedidas em quantidade no período.</td></tr>
             <tr><td>👑 <strong>Top 10 clientes</strong></td><td>Os 10 clientes que mais gastaram em valor no período.</td></tr>
             <tr><td>🧵 <strong>Filamento por material</strong></td><td>Total de gramas impressas por tipo de material no período.</td></tr>
+            <tr><td>📋 <strong>Tarefas de hoje</strong></td><td>Card de atalho que aparece quando há tarefas com prazo hoje ou prioridade Alta. Toque para ir direto para as tarefas urgentes. <span class="pill pill-purple">Premium</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -729,7 +757,7 @@
         <div class="section-icon" style="background:#fef9c3;">📦</div>
         <div>
           <h2>Estoque</h2>
-          <p>Controle de filamentos e consumíveis</p>
+          <p>Controle de filamentos e consumíveis <span class="pill pill-purple" style="vertical-align:middle;">💎 Premium</span></p>
         </div>
       </div>
 
@@ -738,7 +766,7 @@
         <ul class="steps">
           <li><div class="step-num">1</div><div class="step-body"><strong>Toque em "+ Entrada"</strong><span> — Abre o formulário de entrada de estoque.</span></div></li>
           <li><div class="step-num">2</div><div class="step-body"><strong>Selecione o material</strong><span> — PLA, PETG, ABS, ASA etc. (materiais cadastrados em Configurações).</span></div></li>
-          <li><div class="step-num">3</div><div class="step-body"><strong>Escolha a cor</strong><span> — Grade visual com 19 cores. Selecione a cor do carretel que está entrando.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Escolha a cor</strong><span> — Grade visual com cores padrão ou suas cores personalizadas cadastradas.</span></div></li>
           <li><div class="step-num">4</div><div class="step-body"><strong>Informe a quantidade</strong><span> — Em gramas (ex.: 1000 para 1 kg).</span></div></li>
           <li><div class="step-num">5</div><div class="step-body"><strong>Informe o custo</strong><span> — Valor pago pelo filamento em R$/kg (usado no cálculo de lucro).</span></div></li>
           <li><div class="step-num">6</div><div class="step-body"><strong>Salve</strong><span> — O saldo atualiza imediatamente na lista.</span></div></li>
@@ -746,10 +774,11 @@
       </div>
 
       <div class="card">
-        <div class="card-title">Saída / consumo</div>
+        <div class="card-title">Baixas pendentes</div>
         <ul class="steps">
-          <li><div class="step-num">1</div><div class="step-body"><strong>Toque em "Saída"</strong><span> — Para registrar consumo de filamento fora de um pedido específico.</span></div></li>
-          <li><div class="step-num">2</div><div class="step-body"><strong>Informe o material e a quantidade consumida</strong><span> — O sistema desconta do saldo atual.</span></div></li>
+          <li><div class="step-num">1</div><div class="step-body"><strong>O que são</strong><span> — Quando um pedido é concluído, o consumo de filamento fica pendente para confirmação no estoque.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Edite o peso antes de registrar</strong><span> — Toque no campo de gramas da baixa para ajustar o peso real consumido (diferente do estimado).</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Confirme a baixa</strong><span> — Toque em "Registrar" para descontar do saldo. Ou ignore caso o consumo já tenha sido registrado de outra forma.</span></div></li>
         </ul>
       </div>
 
@@ -811,7 +840,8 @@
             <tr><td><strong>Categoria</strong></td><td>Classificação: Decoração, Utensílio, Acessório, Brinquedo etc.</td></tr>
             <tr><td><strong>Peso (g)</strong></td><td>Peso em gramas do material necessário. Usado no cálculo de custo e consumo de filamento.</td></tr>
             <tr><td><strong>Dimensões (mm)</strong></td><td>Tamanho da peça (comprimento × largura × altura).</td></tr>
-            <tr><td><strong>Tempo de impressão</strong></td><td>Horas estimadas de impressão. Usado no Precificador.</td></tr>
+            <tr><td><strong>Tempo de impressão</strong></td><td>Horas estimadas de impressão. Usado no Precificador para calcular energia e depreciação.</td></tr>
+            <tr><td><strong>Multicor / Multimaterial</strong></td><td>Ative para definir material e cor separados por camada ou componente. <span class="pill pill-purple">Premium</span></td></tr>
             <tr><td><strong>Custo de material</strong></td><td>Custo calculado automaticamente a partir do peso e do preço do filamento.</td></tr>
             <tr><td><strong>Observações</strong></td><td>Configurações de impressão, notas do slicer, links de arquivo etc.</td></tr>
           </tbody>
@@ -841,8 +871,9 @@
         <table class="info-table">
           <thead><tr><th>Variável</th><th>O que é</th></tr></thead>
           <tbody>
-            <tr><td><strong>Peso (g)</strong></td><td>Gramas de filamento usados na peça.</td></tr>
-            <tr><td><strong>Tempo (h)</strong></td><td>Horas de impressão estimadas.</td></tr>
+            <tr><td><strong>Impressora</strong></td><td>Define o consumo elétrico (W) e o custo de depreciação por hora. Seleção global — vale para toda a impressão.</td></tr>
+            <tr><td><strong>Peso (g)</strong></td><td>Gramas de filamento usados na peça. No modo multimaterial, informe o peso por material individualmente.</td></tr>
+            <tr><td><strong>Tempo (h)</strong></td><td>Horas de impressão estimadas. Campo global — calcula energia e depreciação para toda a impressão, independente de quantos materiais estiverem configurados.</td></tr>
             <tr><td><strong>Material selecionado</strong></td><td>Define o custo do filamento por grama (baseado no preço cadastrado em estoque/configurações).</td></tr>
             <tr><td><strong>Margem de lucro (%)</strong></td><td>Percentual de lucro desejado sobre o custo total.</td></tr>
             <tr><td><strong>Tarifa de energia</strong></td><td>R$/kWh da sua conta de luz (padrão R$ 0,74).</td></tr>
@@ -852,6 +883,19 @@
             <tr><td><strong>Custos extras</strong></td><td>Adicione itens avulsos: pós-processamento, embalagem, frete etc.</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💎 Modo Multicor / Multimaterial <span class="pill pill-purple">Premium</span></div>
+        <p style="padding:14px 18px 0;font-size:13px;color:var(--txt2);">
+          Ideal para peças impressas com mais de um filamento (troca de cor por camada, componentes montados, objetos AMS/MMU).
+        </p>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Ative o toggle "Objeto multicor/multimaterial"</strong><span> — Aparece abaixo da seleção de impressora (apenas para usuários Premium).</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Adicione cada material</strong><span> — Para cada componente, selecione o material cadastrado, a cor e o peso em gramas daquele filamento específico.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Informe o tempo total</strong><span> — O campo "Tempo total de impressão (h)" fica abaixo dos materiais. É global e vale para calcular energia elétrica e depreciação da impressora de toda a sessão.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Veja o breakdown</strong><span> — O resultado detalha o custo de material de cada filamento separadamente, mais os custos compartilhados (energia, depreciação, overhead).</span></div></li>
+        </ul>
       </div>
 
       <div class="card">
@@ -914,7 +958,7 @@
         <div class="section-icon" style="background:#f0fdf4;">💰</div>
         <div>
           <h2>Cobranças</h2>
-          <p>Pedidos entregues com pagamento pendente</p>
+          <p>Pedidos entregues com pagamento pendente <span class="pill pill-purple" style="vertical-align:middle;">💎 Premium</span></p>
         </div>
       </div>
 
@@ -930,6 +974,142 @@
           <li><div class="step-num">3</div><div class="step-body"><strong>Gere a mensagem de cobrança</strong><span> — O app monta automaticamente uma mensagem amigável com o valor e a chave Pix para você copiar e enviar.</span></div></li>
           <li><div class="step-num">4</div><div class="step-body"><strong>Marque como pago</strong><span> — Após receber, abra o pedido em Vendas e atualize o status de pagamento para "Pago".</span></div></li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ── IMPRESSÕES ─────────────────────────────────── -->
+    <section class="section" id="impressoes">
+      <div class="section-header">
+        <div class="section-icon" style="background:#e0f2fe;">🖨️</div>
+        <div>
+          <h2>Impressões</h2>
+          <p>Registro histórico de cada impressão realizada</p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--txt2);margin-bottom:16px;">
+        O módulo de Impressões permite registrar cada sessão de impressão 3D: qual peça foi impressa, em qual impressora, com qual material e cor, quanto de filamento foi consumido e se houve falha.
+      </p>
+
+      <div class="card">
+        <div class="card-title">Como registrar uma impressão</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Toque em "+ Nova impressão"</strong><span> — Abre o formulário de registro.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Selecione a peça</strong><span> — Vincule ao catálogo de peças para preencher automaticamente peso e tempo estimado.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Escolha a impressora</strong><span> — Qual máquina foi usada nesta sessão.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Informe material, cor e quantidade</strong><span> — O peso real consumido (pode diferir do estimado).</span></div></li>
+          <li><div class="step-num">5</div><div class="step-body"><strong>Registre se houve falha</strong><span> — Em caso de falha, acesse "Falhas" para registrar o motivo e o filamento desperdiçado.</span></div></li>
+          <li><div class="step-num">6</div><div class="step-body"><strong>Salve</strong><span> — A impressão entra no histórico e o consumo de filamento pode ser integrado ao estoque.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Registro de falhas</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Acesse "Falhas"</strong><span> — Dentro de uma impressão ou pelo menu de Impressões.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Descreva o motivo</strong><span> — Aderência, stringing, under-extrusion, falha de energia etc.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Informe o filamento perdido</strong><span> — Peso em gramas do material desperdiçado.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="tip">
+        <div class="tip-icon">📊</div>
+        <div>
+          Manter o histórico de impressões ajuda a identificar padrões de falha, calcular o consumo real de filamento e comparar com o estimado nas peças do catálogo.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TAREFAS ─────────────────────────────────────── -->
+    <section class="section" id="tarefas">
+      <div class="section-header">
+        <div class="section-icon" style="background:#fff7ed;">📋</div>
+        <div>
+          <h2>Tarefas</h2>
+          <p>Organize encomendas e prazos <span class="pill pill-purple" style="vertical-align:middle;">💎 Premium</span></p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--txt2);margin-bottom:16px;">
+        O módulo de Tarefas é um sistema de to-do especializado para makers de impressão 3D. Gerencie encomendas, pesquisas, manutenções e tudo que precisa de acompanhamento — com prazo, prioridade e checklist.
+      </p>
+
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-icon">📅</div>
+          <h4>Prazo e alerta</h4>
+          <p>Defina data limite. Tarefas atrasadas ficam destacadas em vermelho automaticamente.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔥</div>
+          <h4>Prioridades</h4>
+          <p>Alta, Média ou Baixa. Tarefas de Alta prioridade aparecem sempre no painel "Hoje".</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">☑️</div>
+          <h4>Checklist interno</h4>
+          <p>Adicione sub-itens dentro de uma tarefa e marque conforme conclui cada etapa.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">👤</div>
+          <h4>Vínculo com cliente</h4>
+          <p>Associe a tarefa a um cliente cadastrado para rastrear encomendas por pessoa.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Criando uma tarefa</div>
+        <ul class="steps">
+          <li><div class="step-num">1</div><div class="step-body"><strong>Toque em "+" na tela de Tarefas</strong><span> — Abre o formulário de nova tarefa.</span></div></li>
+          <li><div class="step-num">2</div><div class="step-body"><strong>Informe o título</strong><span> — Descreva brevemente o que precisa ser feito.</span></div></li>
+          <li><div class="step-num">3</div><div class="step-body"><strong>Escolha o tipo</strong><span> — Orçamento, Modelo personalizado, Manutenção, Pesquisa ou Outro.</span></div></li>
+          <li><div class="step-num">4</div><div class="step-body"><strong>Selecione o cliente</strong><span> — Toque no campo para abrir a lista de clientes cadastrados.</span></div></li>
+          <li><div class="step-num">5</div><div class="step-body"><strong>Defina a data limite</strong><span> — Toque no campo para abrir o calendário e escolher o prazo.</span></div></li>
+          <li><div class="step-num">6</div><div class="step-body"><strong>Escolha a prioridade</strong><span> — Alta (urgente), Média ou Baixa.</span></div></li>
+          <li><div class="step-num">7</div><div class="step-body"><strong>Adicione cores</strong><span> — Selecione as cores de filamento da tarefa a partir das suas cores cadastradas.</span></div></li>
+          <li><div class="step-num">8</div><div class="step-body"><strong>Crie um checklist</strong><span> — Adicione sub-itens (ex.: "Fatiar modelo", "Configurar suportes", "Embalar") e marque conforme conclui.</span></div></li>
+          <li><div class="step-num">9</div><div class="step-body"><strong>Salve</strong><span> — Toque em "Criar tarefa".</span></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Filtros na lista de tarefas</div>
+        <p style="padding:12px 18px 0;font-size:13px;color:var(--txt2);">A tela de Tarefas tem dois níveis de filtro independentes:</p>
+        <ul class="steps">
+          <li><div class="step-num" style="background:#E85D04">T</div><div class="step-body"><strong>Filtro de tipo</strong><span> — Barra superior: Todos, Orçamento, Modelo personalizado, Manutenção, Pesquisa, Outro.</span></div></li>
+          <li><div class="step-num" style="background:#555">S</div><div class="step-body"><strong>Filtro de status</strong><span> — Barra inferior: Todos, Pendente, Em andamento, Concluída, Cancelada.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Tarefas de hoje</div>
+        <p style="padding:14px 18px;font-size:13px;color:var(--txt2);">
+          O ícone 📅 na barra superior de Tarefas abre a tela <strong>"Tarefas de hoje"</strong>, que reúne automaticamente:
+        </p>
+        <div style="padding:0 18px 14px;display:flex;gap:10px;flex-wrap:wrap;">
+          <span class="pill pill-red">⚠️ Data limite = hoje</span>
+          <span class="pill pill-red">🔥 Prioridade Alta</span>
+        </div>
+        <p style="padding:0 18px 14px;font-size:13px;color:var(--txt2);">
+          Botões de ação rápida permitem <strong>Iniciar</strong> ou <strong>Concluir</strong> cada tarefa sem abrir o formulário completo.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Status das tarefas</div>
+        <div style="padding:14px 18px;display:flex;gap:10px;flex-wrap:wrap;">
+          <span class="pill pill-yellow">⏰ Pendente</span>
+          <span class="pill pill-blue">▶ Em andamento</span>
+          <span class="pill pill-green">✅ Concluída</span>
+          <span class="pill pill-red">✕ Cancelada</span>
+        </div>
+      </div>
+
+      <div class="tip tip-orange">
+        <div class="tip-icon">📋</div>
+        <div>
+          O card de <strong>"Tarefas para hoje"</strong> aparece automaticamente no Dashboard quando há tarefas urgentes. Toque nele para ir direto à lista de prioridades do dia.
+        </div>
       </div>
     </section>
 
@@ -986,10 +1166,13 @@
         <table class="info-table">
           <thead><tr><th>Configuração</th><th>Descrição</th></tr></thead>
           <tbody>
-            <tr><td><strong>Impressoras</strong></td><td>Cadastre suas máquinas (ex.: Ender 3, Bambu Lab P1P). Aparecem como opção ao criar pedidos.</td></tr>
+            <tr><td><strong>Impressoras</strong></td><td>Cadastre suas máquinas (ex.: Ender 3, Bambu Lab P1P). Aparecem como opção ao criar pedidos e no Precificador.</td></tr>
             <tr><td><strong>Materiais</strong></td><td>Tipos de filamento que você usa (PLA, PETG, TPU…). Aparecem nos pedidos, estoque e precificador.</td></tr>
+            <tr><td><strong>Cores personalizadas</strong></td><td>Cadastre cores específicas de filamentos que você usa (ex.: "Verde Menta", "Azul Royal"). Aparecem nos seletores de cor de todo o app.</td></tr>
             <tr><td><strong>Chave Pix</strong></td><td>Sua chave Pix para geração automática de mensagens de cobrança.</td></tr>
             <tr><td><strong>Nome do negócio</strong></td><td>Nome que aparece nos orçamentos em PDF.</td></tr>
+            <tr><td><strong>Tarifa de energia</strong></td><td>R$/kWh usado no Precificador para calcular custo de energia elétrica.</td></tr>
+            <tr><td><strong>Overhead / Desperdício / Falha</strong></td><td>Percentuais padrão do Precificador. Configure uma vez e valem para todos os cálculos.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1014,10 +1197,13 @@
             <tr><td>Clientes</td><td>✅ Ilimitado</td><td>✅ Ilimitado</td></tr>
             <tr><td>Peças no catálogo</td><td>✅ Ilimitado</td><td>✅ Ilimitado</td></tr>
             <tr><td>Precificador</td><td>✅ Completo</td><td>✅ Completo</td></tr>
+            <tr><td>Precificador multicor/multimaterial</td><td>🔒</td><td>✅</td></tr>
             <tr><td>Orçamentos</td><td>✅</td><td>✅</td></tr>
-            <tr><td>Estoque</td><td>🔒 Limitado</td><td>✅ Completo</td></tr>
-            <tr><td>Relatórios avançados</td><td>🔒</td><td>✅</td></tr>
+            <tr><td>Impressões</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Estoque completo</td><td>🔒 Limitado</td><td>✅ Completo</td></tr>
             <tr><td>Cobranças Pix</td><td>🔒</td><td>✅</td></tr>
+            <tr><td>Tarefas e checklist</td><td>🔒</td><td>✅</td></tr>
+            <tr><td>Relatórios avançados</td><td>🔒</td><td>✅</td></tr>
           </tbody>
         </table>
       </div>
@@ -1052,8 +1238,15 @@
           <li>
             <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
             <div class="step-body">
+              <strong>No Precificador, o campo "Tempo" sumiu ao ativar multimaterial</strong>
+              <span>O campo de tempo aparece <strong>abaixo da lista de materiais</strong>, após o botão "Adicionar material/cor". Ele é global — um único valor de horas vale para calcular energia e depreciação de toda a impressão.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
               <strong>Posso usar o app no computador?</strong>
-              <span>Sim! Acesse <a href="https://alves3d.vercel.app" style="color:var(--blue);">alves3d.vercel.app</a> em qualquer navegador. O app funciona na web com todas as funcionalidades.</span>
+              <span>Sim! Acesse <a href="https://alves3d.vercel.app" style="color:var(--blue);">alves3d.vercel.app</a> em qualquer navegador. O app funciona na web com todas as funcionalidades, incluindo sidebar de navegação para telas maiores.</span>
             </div>
           </li>
           <li>
@@ -1068,6 +1261,13 @@
             <div class="step-body">
               <strong>Como adicionar mais de uma cor em um item?</strong>
               <span>Ao criar ou editar um pedido, toque no botão <strong>"Cores"</strong> dentro do item desejado. O seletor permite marcar várias cores. Toque em "Confirmar" quando terminar.</span>
+            </div>
+          </li>
+          <li>
+            <div class="step-num" style="background:#6366f1;font-size:16px;">?</div>
+            <div class="step-body">
+              <strong>As tarefas não aparecem — o que verificar?</strong>
+              <span>O módulo de Tarefas é exclusivo para assinantes Premium. Se você tem Premium ativo, verifique se está logado na conta correta. Se o problema persistir, faça logout e login novamente para atualizar os dados da conta.</span>
             </div>
           </li>
           <li>
@@ -1095,7 +1295,7 @@
       </div>
 
       <div style="text-align:center;padding:32px 0 16px;">
-        <p style="font-size:14px;color:var(--txt3);margin-bottom:16px;">Ainda tem dúvidas? Fale pelo WhatsApp:</p>
+        <p style="font-size:14px;color:var(--txt3);margin-bottom:16px;">Ainda tem dúvidas? Acesse o aplicativo:</p>
         <a href="https://alves3d.vercel.app" style="
           display:inline-block;background:var(--blue);color:#fff;
           text-decoration:none;border-radius:12px;padding:14px 28px;
@@ -1133,6 +1333,8 @@
     ['precificador', '#precificador'],
     ['orcamentos', '#orcamentos'],
     ['cobrancas', '#cobrancas'],
+    ['impressoes', '#impressoes'],
+    ['tarefas', '#tarefas'],
     ['relatorios', '#relatorios'],
     ['configuracoes', '#configuracoes'],
     ['premium', '#premium'],
@@ -1144,7 +1346,7 @@
   function onScroll() {
     const scrollY = window.scrollY + 80
     let current = 'inicio'
-    for (const [id, _] of sections) {
+    for (const [id] of sections) {
       const el = document.getElementById(id) || document.querySelector(`[id="${id}"]`)
       if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) current = id
     }
